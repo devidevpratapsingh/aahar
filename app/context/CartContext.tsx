@@ -3,6 +3,7 @@ import React, {
   useState,
 } from 'react';
 
+
 export const CartContext = createContext<any>(
   null
 );

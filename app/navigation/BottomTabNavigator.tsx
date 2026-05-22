@@ -20,6 +20,7 @@ import AboutScreen from '../screens/AboutScreen';
 import HelpScreen from '../screens/HelpScreen';
 import HistoryScreen from '../screens/HistoryScreen';
 import CartScreen from '../screens/CartScreen';
+import EditProfileScreen from '../screens/EditProfileScreen';
 
 const Tab =
   createBottomTabNavigator();
@@ -104,67 +105,75 @@ const BottomTabNavigator = () => {
 
   return (
 
-    <Tab.Navigator
-      tabBar={(props) => (
-        <CustomTabBar {...props} />
-      )}
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
+<Tab.Navigator
+  tabBar={(props) => (
+    <CustomTabBar {...props} />
+  )}
+  screenOptions={{
+    headerShown: false,
+  }}
+>
 
-      {/* MAIN TABS */}
+  {/* MAIN TABS */}
 
-      <Tab.Screen
-        name="Home"
-        component={HomeScreen}
-      />
+  <Tab.Screen
+    name="Home"
+    component={HomeScreen}
+  />
 
-      <Tab.Screen
-        name="Search"
-        component={SearchScreen}
-      />
+  <Tab.Screen
+    name="Search"
+    component={SearchScreen}
+  />
 
-      <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
-      />
+  <Tab.Screen
+    name="Profile"
+    component={ProfileScreen}
+  />
 
-      {/* HIDDEN PAGES */}
+  {/* HIDDEN PAGES */}
 
-      <Tab.Screen
-        name="Cart"
-        component={CartScreen}
-        options={{
-          tabBarButton: () => null,
-        }}
-      />
+  <Tab.Screen
+    name="Cart"
+    component={CartScreen}
+    options={{
+      tabBarButton: () => null,
+    }}
+  />
 
-      <Tab.Screen
-        name="About"
-        component={AboutScreen}
-        options={{
-          tabBarButton: () => null,
-        }}
-      />
+  <Tab.Screen
+    name="About"
+    component={AboutScreen}
+    options={{
+      tabBarButton: () => null,
+    }}
+  />
 
-      <Tab.Screen
-        name="Help"
-        component={HelpScreen}
-        options={{
-          tabBarButton: () => null,
-        }}
-      />
+  <Tab.Screen
+    name="Help"
+    component={HelpScreen}
+    options={{
+      tabBarButton: () => null,
+    }}
+  />
 
-      <Tab.Screen
-        name="History"
-        component={HistoryScreen}
-        options={{
-          tabBarButton: () => null,
-        }}
-      />
+  <Tab.Screen
+    name="History"
+    component={HistoryScreen}
+    options={{
+      tabBarButton: () => null,
+    }}
+  />
 
-    </Tab.Navigator>
+  <Tab.Screen
+    name="EditProfile"
+    component={EditProfileScreen}
+    options={{
+      tabBarButton: () => null,
+    }}
+  />
+
+</Tab.Navigator>
   );
 };
 

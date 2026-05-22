@@ -13,10 +13,30 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
-const ProfileScreen = ({ navigation }: any) => {
+const ProfileScreen = ({
+  navigation,
+  route,
+}: any) => {
+
+  const updatedName =
+    route?.params?.updatedName
+    || route?.params?.name;
+
+const updatedBio =
+  route?.params?.updatedBio
+  || 'Food Lover 🍕';
+
+  const updatedImage =
+    route?.params?.updatedImage;
 
   const [showSettings, setShowSettings] =
     useState(false);
+
+  // PROFILE IMAGE
+
+  const profileImage =
+    updatedImage ||
+    require('../../assets/logo.png');
 
   return (
 
@@ -143,21 +163,31 @@ const ProfileScreen = ({ navigation }: any) => {
 
       <View style={styles.card}>
 
-        {/* IMAGE */}
+        {/* PROFILE IMAGE */}
 
-        <Image
-          source={require('../../assets/dev4.png')}
-          style={styles.profileImage}
-        />
+        <View>
+
+          <Image
+            source={profileImage}
+            style={styles.profileImage}
+          />
+
+          <Text style={styles.changePhotoText}>
+            Profile Photo
+          </Text>
+
+        </View>
 
         {/* NAME */}
 
         <Text style={styles.name}>
-          Dev Pratap Singh
+          {updatedName || 'Dev Pratap Singh'}
         </Text>
 
+        {/* BIO */}
+
         <Text style={styles.subText}>
-          Food Lover 🍕
+          {updatedBio || 'Food Lover 🍕'}
         </Text>
 
         {/* STATS */}
@@ -208,7 +238,12 @@ const ProfileScreen = ({ navigation }: any) => {
 
         {/* EDIT BUTTON */}
 
-        <TouchableOpacity style={styles.editButton}>
+        <TouchableOpacity
+          style={styles.editButton}
+          onPress={() =>
+            navigation.navigate('EditProfile')
+          }
+        >
 
           <Text style={styles.editText}>
             Edit Profile
@@ -278,7 +313,17 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     borderColor: '#fff',
 
-    marginBottom: 25,
+    marginBottom: 10,
+  },
+
+  changePhotoText: {
+    textAlign: 'center',
+    marginBottom: 20,
+
+    fontSize: 18,
+    fontWeight: 'bold',
+
+    color: '#7d6666',
   },
 
   name: {
@@ -310,7 +355,7 @@ const styles = StyleSheet.create({
 
     alignItems: 'center',
 
-    paddingVertical: 25,
+    paddingVertical: 3.75,
 
     elevation: 5,
   },

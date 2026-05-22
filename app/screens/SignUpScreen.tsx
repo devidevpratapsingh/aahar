@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import {
   View,
   Text,
@@ -6,23 +7,59 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
+  ScrollView,
 } from 'react-native';
 
 const SignUpScreen = ({ navigation }: any) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+
+  const [name, setName] =
+    useState('');
+
+  const [email, setEmail] =
+    useState('');
+
+  const [password, setPassword] =
+    useState('');
 
   return (
-    <View style={styles.container}>
+
+    <ScrollView
+      contentContainerStyle={styles.container}
+      showsVerticalScrollIndicator={false}
+    >
+
+      {/* LOGO */}
 
       <Image
         source={require('../../assets/logo.png')}
         style={styles.logo}
       />
 
+      {/* CARD */}
+
       <View style={styles.card}>
 
-        <Text style={styles.title}>Sign up</Text>
+        {/* TITLE */}
+
+        <Text style={styles.title}>
+          Sign Up
+        </Text>
+
+        {/* NAME */}
+
+        <Text style={styles.label}>
+          Full Name
+        </Text>
+
+        <TextInput
+          style={styles.input}
+          value={name}
+          onChangeText={setName}
+          placeholder="Enter your name"
+          placeholderTextColor="#888"
+        />
+
+        {/* EMAIL */}
 
         <Text style={styles.label}>
           Email Address
@@ -32,7 +69,11 @@ const SignUpScreen = ({ navigation }: any) => {
           style={styles.input}
           value={email}
           onChangeText={setEmail}
+          placeholder="Enter your email"
+          placeholderTextColor="#888"
         />
+
+        {/* PASSWORD */}
 
         <Text style={styles.label}>
           Password
@@ -43,20 +84,39 @@ const SignUpScreen = ({ navigation }: any) => {
           secureTextEntry
           value={password}
           onChangeText={setPassword}
+          placeholder="Enter password"
+          placeholderTextColor="#888"
         />
 
+        {/* SIGN UP BUTTON */}
+
         <TouchableOpacity
-  style={styles.button}
-  onPress={() => navigation.replace('Main')}
->
+          style={styles.button}
+          onPress={() =>
+            navigation.navigate(
+              'Main',
+              {
+                screen: 'Home',
+                params: {
+                  updatedName: name,
+                },
+              }
+            )
+          }
+        >
+
           <Text style={styles.buttonText}>
-            Sign up
+            Sign Up
           </Text>
+
         </TouchableOpacity>
 
+        {/* SIGN IN TOGGLE */}
+
         <View style={styles.row}>
-          <Text>
-            Don’t have an account?
+
+          <Text style={styles.normalText}>
+            Already have an account?
           </Text>
 
           <TouchableOpacity
@@ -64,31 +124,37 @@ const SignUpScreen = ({ navigation }: any) => {
               navigation.navigate('SignIn')
             }
           >
+
             <Text style={styles.signup}>
-              {' '}Sign-In           </Text>
+              {' '}Sign In
+            </Text>
+
           </TouchableOpacity>
+
         </View>
 
       </View>
 
-    </View>
+    </ScrollView>
   );
 };
 
 export default SignUpScreen;
 
 const styles = StyleSheet.create({
+
   container: {
-    flex: 1,
+    flexGrow: 1,
     backgroundColor: '#d2b48c',
     alignItems: 'center',
-    paddingTop: 100,
+    paddingTop: 80,
+    paddingBottom: 60,
   },
 
   logo: {
     width: 180,
     height: 180,
-    
+    marginBottom: 10,
   },
 
   card: {
@@ -110,6 +176,7 @@ const styles = StyleSheet.create({
     color: '#383737',
     fontSize: 18,
     marginBottom: 8,
+    fontWeight: '600',
   },
 
   input: {
@@ -118,19 +185,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     height: 55,
     marginBottom: 20,
+    fontSize: 16,
   },
 
   button: {
     backgroundColor: '#7d6666',
     paddingVertical: 18,
     borderRadius: 40,
-    marginTop: 20,
+    marginTop: 15,
     alignItems: 'center',
   },
 
   buttonText: {
     color: '#fff',
-    fontSize: 30,
+    fontSize: 28,
     fontWeight: 'bold',
   },
 
@@ -138,10 +206,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     marginTop: 25,
+    alignItems: 'center',
+  },
+
+  normalText: {
+    fontSize: 16,
+    color: '#333',
   },
 
   signup: {
     color: '#4da6ff',
     fontWeight: 'bold',
+    fontSize: 16,
   },
+
 });
