@@ -112,7 +112,7 @@ const HomeScreen = ({ navigation }: any) => {
             </Text>
 
             <Text style={styles.location}>
-              Jamui, Bihar
+              Ranchi ,Jharkhand
             </Text>
 
           </View>
@@ -120,14 +120,11 @@ const HomeScreen = ({ navigation }: any) => {
         </View>
 
         {/* CART ICON */}
-
-        <TouchableOpacity
-          onPress={() =>
-            navigation
-              .getParent()
-              ?.navigate('Cart')
-          }
-        >
+<TouchableOpacity
+  onPress={() =>
+    navigation.navigate('Cart')
+  }
+>
 
           <Ionicons
             name="cart"
@@ -304,7 +301,7 @@ const styles = StyleSheet.create({
   },
 
   location: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
   },
 

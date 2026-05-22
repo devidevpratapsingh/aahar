@@ -1,17 +1,19 @@
+import React from 'react';
 
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {
+  createNativeStackNavigator,
+} from '@react-navigation/native-stack';
 
 import WelcomeScreen from '../screens/WelcomeScreen';
 import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 
-import BottomTabs from '../navigation/BottomTabNavigator';
+import BottomTabNavigator from './BottomTabNavigator';
 
-import CartScreen from '../screens/CartScreen';
+const Stack =
+  createNativeStackNavigator();
 
-const Stack = createNativeStackNavigator();
-
-export default function AppNavigator() {
+const AppNavigator = () => {
 
   return (
 
@@ -38,16 +40,11 @@ export default function AppNavigator() {
 
       <Stack.Screen
         name="Main"
-        component={BottomTabs}
-      />
-
-      {/* ADD THIS */}
-
-      <Stack.Screen
-        name="Cart"
-        component={CartScreen}
+        component={BottomTabNavigator}
       />
 
     </Stack.Navigator>
   );
-}
+};
+
+export default AppNavigator;

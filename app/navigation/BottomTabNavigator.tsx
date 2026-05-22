@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 import {
@@ -17,12 +16,16 @@ import HomeScreen from '../screens/HomeScreen';
 import SearchScreen from '../screens/SearchScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 
+import AboutScreen from '../screens/AboutScreen';
+import HelpScreen from '../screens/HelpScreen';
+import HistoryScreen from '../screens/HistoryScreen';
+import CartScreen from '../screens/CartScreen';
+
 const Tab =
   createBottomTabNavigator();
 
 const CustomTabBar = ({
   state,
-  descriptors,
   navigation,
 }: any) => {
 
@@ -41,7 +44,7 @@ const CustomTabBar = ({
 
         <Ionicons
           name="home"
-          size={28}
+          size={30}
           color={
             state.index === 0
               ? '#00ff00'
@@ -51,7 +54,7 @@ const CustomTabBar = ({
 
       </TouchableOpacity>
 
-      {/* SEARCH CENTER */}
+      {/* SEARCH */}
 
       <TouchableOpacity
         style={styles.centerButton}
@@ -60,14 +63,14 @@ const CustomTabBar = ({
         }
       >
 
-       <Ionicons
-        name="search"
-        size={32}
-        color={
+        <Ionicons
+          name="search"
+          size={34}
+          color={
             state.index === 1
-            ? '#00ff00'
-            : '#fff'
-        }
+              ? '#00ff00'
+              : '#fff'
+          }
         />
 
       </TouchableOpacity>
@@ -83,7 +86,7 @@ const CustomTabBar = ({
 
         <Ionicons
           name="person"
-          size={28}
+          size={30}
           color={
             state.index === 2
               ? '#00ff00'
@@ -110,6 +113,8 @@ const BottomTabNavigator = () => {
       }}
     >
 
+      {/* MAIN TABS */}
+
       <Tab.Screen
         name="Home"
         component={HomeScreen}
@@ -125,8 +130,41 @@ const BottomTabNavigator = () => {
         component={ProfileScreen}
       />
 
-    </Tab.Navigator>
+      {/* HIDDEN PAGES */}
 
+      <Tab.Screen
+        name="Cart"
+        component={CartScreen}
+        options={{
+          tabBarButton: () => null,
+        }}
+      />
+
+      <Tab.Screen
+        name="About"
+        component={AboutScreen}
+        options={{
+          tabBarButton: () => null,
+        }}
+      />
+
+      <Tab.Screen
+        name="Help"
+        component={HelpScreen}
+        options={{
+          tabBarButton: () => null,
+        }}
+      />
+
+      <Tab.Screen
+        name="History"
+        component={HistoryScreen}
+        options={{
+          tabBarButton: () => null,
+        }}
+      />
+
+    </Tab.Navigator>
   );
 };
 
@@ -152,7 +190,7 @@ const styles = StyleSheet.create({
 
     alignItems: 'center',
 
-    paddingHorizontal: 40,
+    paddingHorizontal: 45,
 
     elevation: 10,
   },
@@ -163,10 +201,10 @@ const styles = StyleSheet.create({
   },
 
   centerButton: {
-    width: 70,
-    height: 70,
+    width: 75,
+    height: 75,
 
-    borderRadius: 35,
+    borderRadius: 40,
 
     backgroundColor: '#222',
 

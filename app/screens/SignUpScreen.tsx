@@ -61,7 +61,7 @@ const SignUpScreen = ({ navigation }: any) => {
 
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate('SignIn ')
+              navigation.navigate('SignIn')
             }
           >
             <Text style={styles.signup}>
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 180,
     height: 180,
-    resizeMode: 'contain',
+    
   },
 
   card: {
@@ -100,14 +100,14 @@ const styles = StyleSheet.create({
 
   title: {
     fontSize: 40,
-    color: '#fff',
+    color: '#383737',
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 30,
   },
 
   label: {
-    color: '#fff',
+    color: '#383737',
     fontSize: 18,
     marginBottom: 8,
   },

@@ -9,6 +9,7 @@ import {
   ScrollView,
 } from 'react-native';
 
+
 const CartScreen = () => {
   const [quantity, setQuantity] = useState(1);
 

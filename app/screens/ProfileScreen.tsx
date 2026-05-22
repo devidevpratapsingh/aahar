@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
+  ScrollView,
 } from 'react-native';
 
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -13,52 +14,96 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 const ProfileScreen = ({ navigation }: any) => {
+
   const [showSettings, setShowSettings] =
     useState(false);
 
   return (
-    <View style={styles.container}>
+
+    <ScrollView
+      contentContainerStyle={styles.container}
+      showsVerticalScrollIndicator={false}
+    >
 
       {/* SETTINGS PANEL */}
 
       {showSettings && (
+
         <View style={styles.settingsPanel}>
 
-          <TouchableOpacity style={styles.menuItem}>
+          {/* HELP */}
+
+          <TouchableOpacity
+            style={styles.menuItem}
+            onPress={() => {
+
+              setShowSettings(false);
+
+              navigation.navigate('Help');
+            }}
+          >
+
             <Ionicons
               name="chatbubble-ellipses"
-              size={28}
-              color="black"
+              size={30}
+              color="#fff"
             />
 
             <Text style={styles.menuText}>
               Help
             </Text>
+
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.menuItem}>
+          {/* ABOUT */}
+
+          <TouchableOpacity
+            style={styles.menuItem}
+            onPress={() => {
+
+              setShowSettings(false);
+
+              navigation.navigate('About');
+            }}
+          >
+
             <Ionicons
               name="information-circle"
-              size={28}
-              color="black"
+              size={30}
+              color="#fff"
             />
 
             <Text style={styles.menuText}>
               About
             </Text>
+
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.menuItem}>
+          {/* HISTORY */}
+
+          <TouchableOpacity
+            style={styles.menuItem}
+            onPress={() => {
+
+              setShowSettings(false);
+
+              navigation.navigate('History');
+            }}
+          >
+
             <MaterialIcons
               name="history"
-              size={28}
-              color="black"
+              size={30}
+              color="#fff"
             />
 
-            <Text style={styles.historyText}>
+            <Text style={styles.menuText}>
               History
             </Text>
+
           </TouchableOpacity>
+
+          {/* SIGN OUT */}
 
           <TouchableOpacity
             style={styles.signOutButton}
@@ -66,12 +111,15 @@ const ProfileScreen = ({ navigation }: any) => {
               navigation.replace('Welcome')
             }
           >
+
             <Text style={styles.signOutText}>
-              Sign out
+              Sign Out
             </Text>
+
           </TouchableOpacity>
 
         </View>
+
       )}
 
       {/* SETTINGS ICON */}
@@ -82,54 +130,78 @@ const ProfileScreen = ({ navigation }: any) => {
           setShowSettings(!showSettings)
         }
       >
+
         <Ionicons
           name="settings"
-          size={35}
-          color="black"
+          size={34}
+          color="#fff"
         />
+
       </TouchableOpacity>
 
       {/* PROFILE CARD */}
 
       <View style={styles.card}>
 
+        {/* IMAGE */}
+
         <Image
-          source={{
-            uri: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e',
-          }}
+          source={require('../../assets/dev4.png')}
           style={styles.profileImage}
         />
+
+        {/* NAME */}
 
         <Text style={styles.name}>
           Dev Pratap Singh
         </Text>
 
-        {/* ICON SECTION */}
+        <Text style={styles.subText}>
+          Food Lover 🍕
+        </Text>
 
-        <View style={styles.iconContainer}>
+        {/* STATS */}
 
-          <View style={styles.iconBox}>
+        <View style={styles.statsContainer}>
+
+          {/* COINS */}
+
+          <View style={styles.statCard}>
+
             <FontAwesome5
               name="coins"
-              size={45}
-              color="black"
+              size={35}
+              color="#7d6666"
             />
 
-            <Text style={styles.iconText}>
-              coin
+            <Text style={styles.statNumber}>
+              250
             </Text>
+
+            <Text style={styles.statLabel}>
+              Coins
+            </Text>
+
           </View>
 
-          <View style={styles.iconBox}>
+          {/* GIFTS */}
+
+          <View style={styles.statCard}>
+
             <Ionicons
               name="gift"
-              size={50}
-              color="black"
+              size={38}
+              color="#7d6666"
             />
 
-            <Text style={styles.iconText}>
-              Gift
+            <Text style={styles.statNumber}>
+              12
             </Text>
+
+            <Text style={styles.statLabel}>
+              Gifts
+            </Text>
+
           </View>
 
         </View>
@@ -137,154 +209,199 @@ const ProfileScreen = ({ navigation }: any) => {
         {/* EDIT BUTTON */}
 
         <TouchableOpacity style={styles.editButton}>
+
           <Text style={styles.editText}>
-            Edit
+            Edit Profile
           </Text>
+
         </TouchableOpacity>
 
       </View>
 
-    </View>
+    </ScrollView>
   );
 };
 
 export default ProfileScreen;
 
 const styles = StyleSheet.create({
+
   container: {
-    flex: 1,
+    flexGrow: 1,
     backgroundColor: '#d2b48c',
     alignItems: 'center',
     paddingTop: 80,
+    paddingBottom: 140,
   },
 
   settingIcon: {
     position: 'absolute',
     top: 50,
-    right: 35,
+    right: 30,
+
+    width: 55,
+    height: 55,
+
+    borderRadius: 30,
+
+    backgroundColor: '#7d6666',
+
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    elevation: 8,
+
     zIndex: 100,
   },
 
   card: {
     width: '90%',
-    backgroundColor: '#e3cfab',
-    borderRadius: 30,
+    backgroundColor: '#e7d4b5',
+
+    borderRadius: 40,
+
     alignItems: 'center',
+
     paddingVertical: 40,
-    marginTop: 120,
+
+    marginTop: 90,
+
+    elevation: 10,
   },
 
   profileImage: {
-    width: 210,
-    height: 160,
-    borderRadius: 90,
-    marginBottom: 30,
+    width: 180,
+    height: 180,
+
+    borderRadius: 100,
+
+    borderWidth: 5,
+    borderColor: '#fff',
+
+    marginBottom: 25,
   },
 
   name: {
-    fontSize: 28,
+    fontSize: 34,
     fontWeight: 'bold',
-    marginBottom: 60,
+    color: '#2f2323',
   },
 
-  iconContainer: {
+  subText: {
+    fontSize: 18,
+    color: '#6b5a5a',
+    marginTop: 8,
+    marginBottom: 35,
+  },
+
+  statsContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '100%',
-    marginBottom: 70,
+    justifyContent: 'space-between',
+
+    width: '90%',
+    marginBottom: 40,
   },
 
-  iconBox: {
+  statCard: {
+    width: '45%',
+    backgroundColor: '#fff',
+
+    borderRadius: 30,
+
     alignItems: 'center',
+
+    paddingVertical: 25,
+
+    elevation: 5,
   },
 
-  iconText: {
-    fontSize: 24,
+  statNumber: {
+    fontSize: 30,
     fontWeight: 'bold',
-    marginTop: 10,
+    marginTop: 12,
+    color: '#2f2323',
+  },
+
+  statLabel: {
+    fontSize: 18,
+    color: '#7d6666',
+    marginTop: 5,
+    fontWeight: '600',
   },
 
   editButton: {
     width: '80%',
-    height: 70,
+    height: 65,
+
     backgroundColor: '#7d6666',
-    borderRadius: 40,
+
+    borderRadius: 35,
+
     justifyContent: 'center',
     alignItems: 'center',
   },
 
   editText: {
-    fontSize: 32,
+    color: '#fff',
+    fontSize: 24,
     fontWeight: 'bold',
-    color: 'black',
   },
 
   settingsPanel: {
     position: 'absolute',
     right: 0,
     top: 0,
-    width: '58%',
+
+    width: '62%',
     height: '100%',
-    backgroundColor: '#bca684',
+
+    backgroundColor: '#7d6666',
 
     borderTopLeftRadius: 80,
     borderBottomLeftRadius: 80,
 
     paddingTop: 160,
-    paddingLeft: 25,
+    paddingLeft: 28,
 
     zIndex: 99,
 
-    shadowColor: '#000',
-    shadowOffset: {
-      width: -5,
-      height: 5,
-    },
-
-    shadowOpacity: 0.3,
-    shadowRadius: 5,
-
-    elevation: 10,
+    elevation: 20,
   },
 
   menuItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 40,
+    marginBottom: 45,
   },
 
   menuText: {
     fontSize: 28,
-    marginLeft: 10,
-    color: '#3d2d2d',
-    fontWeight: '500',
-  },
-
-  historyText: {
-    fontSize: 30,
-    marginLeft: 10,
-    fontWeight: 'bold',
-    color: 'black',
+    marginLeft: 14,
+    color: '#fff',
+    fontWeight: '600',
   },
 
   signOutButton: {
     position: 'absolute',
     bottom: 70,
+
     alignSelf: 'center',
 
     width: '85%',
-    height: 55,
+    height: 60,
 
-    backgroundColor: '#7d6666',
-    borderRadius: 30,
+    backgroundColor: '#fff',
+
+    borderRadius: 35,
 
     justifyContent: 'center',
     alignItems: 'center',
   },
 
   signOutText: {
-    color: '#fff',
+    color: '#7d6666',
     fontSize: 24,
     fontWeight: 'bold',
   },
+
 });

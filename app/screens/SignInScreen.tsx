@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 180,
     height: 180,
-    resizeMode: 'contain',
+    
   },
 
   card: {

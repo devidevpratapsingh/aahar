@@ -33,15 +33,15 @@ export default WelcomeScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 2,
     backgroundColor: '#d2b48c',
     justifyContent: 'center',
     alignItems: 'center',
   },
 
   logo: {
-    width: 180,
-    height: 180,
+       width: 436,
+    height: 428,
     resizeMode: 'contain',
     marginBottom: 80,
   },

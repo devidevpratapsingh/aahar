@@ -138,9 +138,18 @@ const SearchScreen = ({ navigation }: any) => {
 
       <View style={styles.header}>
 
-        <Text style={styles.heading}>
-          Search Food
-        </Text>
+        <View style={styles.leftHeader}>
+
+          <Image
+            source={require('../../assets/logo.png')}
+            style={styles.logo}
+          />
+
+          <Text style={styles.heading}>
+            Search Food
+          </Text>
+
+        </View>
 
         <Ionicons
           name="search"
@@ -251,17 +260,15 @@ const SearchScreen = ({ navigation }: any) => {
                   </Text>
 
                   <TouchableOpacity
-                    style={styles.addButton}
-                    onPress={() => {
+              style={styles.addButton}
+              onPress={() => {
 
-                    addToCart(item);
+                addToCart(item);
 
-                    navigation
-                        .getParent()
-                        ?.navigate('Cart');
-                    }}
-                    
-                  >
+                navigation.navigate('Cart');
+
+              }}
+            >
 
                     <Text style={styles.addText}>
                       Add To Cart
@@ -315,15 +322,14 @@ const SearchScreen = ({ navigation }: any) => {
 
                   <TouchableOpacity
                     style={styles.addButton}
-                        onPress={() => {
+                    onPress={() => {
 
-                        addToCart(item);
+                      addToCart(item);
 
-                        navigation
-                            .getParent()
-                            ?.navigate('Cart');
-                        }}
-                                            
+                      navigation
+                        .getParent()
+                        ?.navigate('Cart');
+                    }}
                   >
 
                     <Text style={styles.addText}>
@@ -364,10 +370,22 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 
+  leftHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  logo: {
+    width: 75,
+    height: 75,
+    
+    marginRight: 12,
+  },
+
   heading: {
-    fontSize: 32,
+    fontSize: 25,
     fontWeight: 'bold',
-    color: '#3d2d2d',
+    color: '#564545',
   },
 
   searchBox: {
