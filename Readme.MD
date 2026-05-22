@@ -1,36 +1,76 @@
-# AAHAR Food Delivery App
+# 🍔 AAHAR Food Delivery App
 
-## GitHub Repository
-https://github.com/devidevpratapsingh/aahar
+AAHAR is a modern Food Delivery Mobile Application built using React Native and Expo.
 
-## TLDraw Navigation Diagram
-https://www.tldraw.com/f/kL-OMNt4IW5d3dKVGfRnJ?d=v-102.-151.1362.925.page
+This project demonstrates React Navigation concepts including Stack Navigation, Bottom Tabs, Drawer Navigation, Nested Navigation, Authentication Flow, Cart Management, and Profile Editing.
 
-## Demo Video
-(Add your Google Drive video link here)
+---
 
-## Features Implemented
-- Stack Navigation
+# 🚀 Features
+
+- Onboarding Screen
+- Sign In / Sign Up Authentication
+- Home Screen
+- Search Food Screen
+- Cart Screen
+- Orders Screen
+- Profile Screen
+- Edit Profile
+- About Screen
+- Help Screen
+- History Screen
 - Bottom Tab Navigation
+- Stack Navigation
 - Drawer Navigation
-- Cart System
-- Profile Editing
-- Authentication Flow
-- Custom Bottom Tab
-- About / Help / History Pages
 - Nested Navigation
-- Context API
-- React Native with Expo
+- Context API Cart System
+- Custom Bottom Navigation
+- Add to Cart Feature
+- Profile Photo Change
+- React Navigation Integration
 
-## Tech Stack
+---
+
+# 📱 Tech Stack
+
 - React Native
 - Expo
 - TypeScript
 - React Navigation
+- Expo Image Picker
+- AsyncStorage
 
+---
 
-## Run Locally
+# 📂 Folder Structure
 
 ```bash
-npm install
-npx expo start
+app/
+ ├── components/
+ ├── context/
+ ├── navigation/
+ ├── screens/
+ ├── assets/
+ └── data/
+
+
+ Welcome Screen
+      ↓
+Sign In / Sign Up
+      ↓
+Main Bottom Tabs
+ ├── Home
+ │      ↓
+ │ Restaurant Detail
+ │      ↓
+ │    Cart
+ │
+ ├── Search
+ ├── Orders
+ └── Profile
+        ↓
+      Drawer
+   ├── Help
+   ├── Settings
+   ├── History
+   └── Logout
