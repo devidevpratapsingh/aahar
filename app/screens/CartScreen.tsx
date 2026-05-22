@@ -16,6 +16,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 import { CartContext } from '../context/CartContext';
 
+
 const CartScreen = () => {
 
   const {

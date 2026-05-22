@@ -14,7 +14,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 const HelpScreen = ({ navigation }: any) => {
 
-  // EMAIL
+  
 
   const openEmail = () => {
 
@@ -112,7 +112,7 @@ const HelpScreen = ({ navigation }: any) => {
             </Text>
 
             <Text style={styles.info}>
-              +91 9876543210
+              +91 XXXXXX95
             </Text>
 
           </View>
